@@ -5,7 +5,24 @@ import json
 with open('data/health_data.json', 'r', encoding = 'utf-8') as f:
     md = json.load(f)
 
+class duplic:
+    def __init__(self, id, name, samedata):
+        self.id = id
+        self.name = name
+        self.samedata = samedata
+
+    def datarecord(self):
+        if 
+
+
+
+
+
 # 실험
 qwer = pd.DataFrame(md)
 
 if qwer.duplicated(keep=False) == True:
+
+
+
+
