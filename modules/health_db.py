@@ -50,7 +50,7 @@ class healthmanage:
         """기존 식별번호 중 가장 큰 번호에 1을 더해 새 식별번호(예: P2026-0001)를 반환한다."""
         maxnum = 0  
         for r in self.records:
-            num = int(r.id.split("-")[1])
+            num = int(r.id.split("-")[1]) # 문자열로 나눈뒤 [1] 즉 0001을 가져오게 하고 int로 정수 반환시키기
             maxnum = max(maxnum, num)
         return f"{id_auto}{maxnum + 1:04d}"
 

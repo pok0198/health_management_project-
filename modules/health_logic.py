@@ -1,14 +1,11 @@
-# 판다스 모듈 불러오기
+# 판다스 모듈 및 json 모듈 불러오기 & 실험 단계
 import pandas as pd
+import json
 
-FIELDS = ["id", "name", "birth_year", "gender", "height", "weight", "bmi", "status"]
+with open('data/health_data.json', 'r', encoding = 'utf-8') as f:
+    md = json.load(f)
 
+# 실험
+qwer = pd.DataFrame(md)
 
-# 파일 경로 연동 및 딕셔너리 변환
-json = pd.read_json('data/health_data.json', encoding='utf-8')
-dic = {f"{json}"}
-
-# 데이터 프레임
-df = pd.DataFrame(dic, index = ["실험"])
-print(df)
-
+if qwer.duplicated(keep=False) == True:
