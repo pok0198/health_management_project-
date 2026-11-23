@@ -28,5 +28,15 @@
     "weight": 85.0,
     "bmi": 29.41,
     "status": "비만"
+  },
+  {
+    "id": "P2026-0004",
+    "name": "황현준",
+    "birth_year": 2007,
+    "gender": "남",
+    "height": 176.0,
+    "weight": 61.0,
+    "bmi": 19.7,
+    "status": "정상"
   }
 ]
