@@ -1,6 +1,9 @@
 """모듈 2: 비즈니스 로직(CRUD + 통계) 및 콘솔(TUI) 테스트 앱."""
+from modules.health_db import healthmanage, healthdata, FORMATS
+
 import statistics
 from datetime import date
+
 
 # bmi 코드 만들기 전에 팀과제로 만들어놨던 bmi코드 가져오기
 def calculate_bmi(height, weight):
