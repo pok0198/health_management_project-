@@ -1,8 +1,8 @@
 """모듈 2: 비즈니스 로직(CRUD + 통계) 및 콘솔(TUI) 테스트 앱."""
 from modules.health_db import healthmanage, healthdata, FORMATS
 
-import statistics
-from datetime import date
+import statistics # bmi 계산 모듈 불러오기
+from datetime import date # 년생 상한가없애기 위해서 날짜 클래스 갖고오기
 
 
 # bmi 코드 만들기 전에 팀과제로 만들어놨던 bmi코드 가져오기
@@ -115,6 +115,10 @@ def print_statistics(stats):
     for field, label in (("height", "키"), ("weight", "몸무게"), ("bmi", "BMI")):
         if field in stats:
             print(f"  {label} 평균 {stats[field][0]:.2f} | 표준편차 {stats[field][1]:.2f}")
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# 모듈3 이전 테스트 코드 없애도 됨
 
 
 MENU = """

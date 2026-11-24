@@ -220,7 +220,7 @@ class HealthManagerGUI:
     # 4. 콜백: 추가 / 수정 / 삭제 (버튼 → 모듈 2 메소드 호출 → 화면 갱신)
 
     def on_add(self):
-        """[추가 버튼] 입력값을 변환해 add_health를 호출한다."""
+        """추가 버튼 입력값을 변환해 add_health를 호출한다."""
         try:
             record = self.manager.add_health(
                 self.name_var.get(),
@@ -238,7 +238,7 @@ class HealthManagerGUI:
                                          f"식별번호 {record.id} | BMI {record.bmi} ({record.status})")
 
     def on_update(self):
-        """[수정 버튼] 선택된 레코드의 키/몸무게를 update_health로 수정한다."""
+        """수정 버튼 선택된 레코드의 키/몸무게를 update_health로 수정한다."""
         if self.selected_id is None:
             messagebox.showwarning("선택 필요", "수정할 행을 목록에서 먼저 선택하세요.")
             return
@@ -256,7 +256,7 @@ class HealthManagerGUI:
         self.clear_form()
 
     def on_delete(self):
-        """[삭제 버튼] 확인 후 선택된 레코드를 delete_health로 삭제한다."""
+        """삭제 버튼 확인 후 선택된 레코드를 delete_health로 삭제한다."""
         if self.selected_id is None:
             messagebox.showwarning("선택 필요", "삭제할 행을 목록에서 먼저 선택하세요.")
             return
@@ -272,7 +272,7 @@ class HealthManagerGUI:
     # 5. 콜백: 조회 / 검색 = ai 추가 기능
 
     def on_select(self, event=None):
-        """[행 선택 이벤트] find_by_id로 상세 정보를 보여주고 입력칸에 채운다."""
+        """행 선택 이벤트 find_by_id로 상세 정보를 보여주고 입력칸에 채운다."""
         selection = self.tree.selection()
         if not selection:
             return
@@ -294,7 +294,7 @@ class HealthManagerGUI:
         ))
 
     def on_search(self):  # ai 추가 기능 enter키 상호작용
-        """[검색 버튼 / Enter] 식별번호 우선, 없으면 이름으로 검색한다."""
+        """검색 버튼 / Enter 식별번호 우선, 없으면 이름으로 검색한다."""
         key = self.search_var.get().strip()
         if not key:
             self.on_show_all()
@@ -306,7 +306,7 @@ class HealthManagerGUI:
             messagebox.showinfo("검색 결과", "일치하는 데이터가 없습니다.")
 
     def on_show_all(self):
-        """[전체 목록 버튼] 검색창을 비우고 전체 목록을 다시 보여준다."""
+        """전체 목록 버튼 검색창을 비우고 전체 목록을 다시 보여준다."""
         self.search_var.set("")
         self.refresh_list()
 
@@ -315,7 +315,7 @@ class HealthManagerGUI:
     # 6. 콜백: 파일 입출력 / 종료
 
     def on_load(self):
-        """[불러오기 버튼] 선택한 형식의 파일을 load로 읽는다."""
+        """불러오기 버튼 선택한 형식의 파일을 load로 읽는다."""
         fmt = self.fmt_var.get()
         self.manager.load(fmt)
         self.reload_all()
@@ -323,7 +323,7 @@ class HealthManagerGUI:
         messagebox.showinfo("불러오기", f"{fmt} 파일에서 {len(self.manager.records)}건을 불러왔습니다.")
 
     def on_save(self):
-        """[내보내기 버튼] 선택한 형식으로 save를 호출한다."""
+        """내보내기 버튼 선택한 형식으로 save를 호출한다."""
         fmt = self.fmt_var.get()
         if self.manager.save(fmt):
             messagebox.showinfo("내보내기", f"health_data.{fmt} 파일로 저장했습니다.")
@@ -331,9 +331,9 @@ class HealthManagerGUI:
             messagebox.showerror("내보내기 실패", "파일 저장에 실패했습니다.")
 
     def on_close(self):     # ai 추가 기능 마지막으로 묻기
-        """[창 닫기 이벤트] 종료 전에 json으로 저장할지 묻는다."""
+        """창 닫기 이벤트 종료 전에 json으로 저장할지 묻는다."""
         answer = messagebox.askyesnocancel("종료", "종료하기 전에 json 파일로 저장할까요?")
-        if answer is None:      # 취소 → 종료하지 않음
+        if answer is None:      # 취소 하면 종료하지 않음
             return
         if answer:
             self.manager.save("json")
